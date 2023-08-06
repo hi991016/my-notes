@@ -1,0 +1,22 @@
+const output = array.reduce((result, current) => {
+const dataFilter = array.filter(each => each.num === current.num);
+  if(dataFilter.length > 1 && current.lang === langDefault) {
+  	result.push(current);
+  }
+  
+  if(dataFilter.length < 2){
+  	result.push(current);
+  }
+return result;
+},[]);
+
+
+mix-blend-mode multiply;
+isolation isolate;
+
+// point
+https://thomasbosc.com/en
+https://codepen.io/hieunc/pen/QWNGprb
+https://codepen.io/mirichan/pen/jEBmyG
+https://sirisiri.jp/
+https://codepen.io/dbilanoski/pen/LabpzG
