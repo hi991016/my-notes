@@ -11,8 +11,9 @@ return result;
 },[]);
 
 
-mix-blend-mode multiply;
-isolation isolate;
+https://codepen.io/get-web/pen/mdrxxZP
+https://codepen.io/blessed_/pen/JjXLLPV
+https://codepen.io/bjlashbrook/pen/byXzdB
 
 // point
 https://thomasbosc.com/en
@@ -20,3 +21,4 @@ https://codepen.io/hieunc/pen/QWNGprb
 https://codepen.io/mirichan/pen/jEBmyG
 https://sirisiri.jp/
 https://codepen.io/dbilanoski/pen/LabpzG
+
