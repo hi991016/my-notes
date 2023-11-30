@@ -1,0 +1,72 @@
+https://hocwp.net/cai-dat-imagick-tren-xampp-va-php-7-1/
+
+<?php 
+ $image = new Imagick();
+ $image->readImageBlob(file_get_contents($value["url"]));
+ $image->resizeImage(250, 250, Imagick::FILTER_GAUSSIAN, 1);
+ $image->quantizeImage(1, Imagick::COLORSPACE_RGB, 0, false, false);
+ $image->setFormat('RGB');
+ echo substr(bin2hex($image), 0, 6);
+?>
+
+// detactive fade
+$("main img")
+  .on("load", function () {
+    // when the browser cache is disabled, only this code doesn't work:
+    $(this).addClass("loaded");
+  })
+  .each(function () {
+    // to make it work you have to add, catch when image is cache
+    if ($(this).prop("complete")) $(this).addClass("loaded");
+  });
+
+
+// custom js
+const getAverageColor = (img) => {
+  const max = 10; // Max size (Higher num = better precision but slower)
+  const { naturalWidth: iw, naturalHeight: ih } = img;
+  const ctx = document.createElement`canvas`.getContext`2d`;
+  const sr = Math.min(max / iw, max / ih); // Scale ratio
+  const w = Math.ceil(iw * sr); // Width
+  const h = Math.ceil(ih * sr); // Height
+  const a = w * h; // Area
+
+  let b;
+  let g;
+
+  img.crossOrigin = 1;
+  ctx.canvas.width = w;
+  ctx.canvas.height = h;
+  ctx.drawImage(img, 0, 0, w, h);
+
+  const data = ctx.getImageData(0, 0, w, h).data;
+  let r = (g = b = 0);
+
+  for (let i = 0; i < data.length; i += 4) {
+    r += data[i];
+    g += data[i + 1];
+    b += data[i + 2];
+  }
+
+  r = ~~(r / a);
+  g = ~~(g / a);
+  b = ~~(b / a);
+
+  return { r, g, b };
+};
+
+const setBgFromAverage = (img) => {
+  const child = img.querySelector("img");
+  child.addEventListener("load", () => {
+    console.log('child', child)
+    const { r, g, b } = getAverageColor(child);
+    img.style.backgroundColor = `rgb(${r},${g},${b})`;
+
+    setTimeout(() => {
+      child.style.opacity = 1;
+    }, 1000);
+  });
+};
+
+document.querySelectorAll(".detailpage .detail__img").forEach(setBgFromAverage);
+document.querySelectorAll(".homepage .grid__items figure").forEach(setBgFromAverage);
