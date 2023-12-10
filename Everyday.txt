@@ -1,0 +1,6 @@
+https://blog.logrocket.com/using-contentful-with-react/
+https://github.com/ovieokeh/react-contentful
+
+https://hygraph.com/frameworks/react-cms
+https://codesandbox.io/p/sandbox/hygraph-with-reactjs-t5bke
+https://github.com/hygraph/hygraph-examples/tree/master/with-reactjs
