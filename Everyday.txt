@@ -4,3 +4,9 @@ https://github.com/ovieokeh/react-contentful
 https://hygraph.com/frameworks/react-cms
 https://codesandbox.io/p/sandbox/hygraph-with-reactjs-t5bke
 https://github.com/hygraph/hygraph-examples/tree/master/with-reactjs
+
+https://github.com/erdemkarakas/react-sass-navbar-responsive-route-hamburger
+https://medium.com/front-end-weekly/how-to-create-amazing-scroll-based-animations-with-gsap-scrolltrigger-and-framer-motion-c17482ab3f4
+https://codesandbox.io/p/sandbox/scrolltrigger-jcml5
+https://codesandbox.io/p/sandbox/gsap-scrolltrigger-yob9k
+https://dev.to/higashikota/i-made-a-scroll-animation-using-recoil-and-gsaps-scrolltrigger-with-tailwindcss-4jf1
