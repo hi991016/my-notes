@@ -10,3 +10,12 @@ https://medium.com/front-end-weekly/how-to-create-amazing-scroll-based-animation
 https://codesandbox.io/p/sandbox/scrolltrigger-jcml5
 https://codesandbox.io/p/sandbox/gsap-scrolltrigger-yob9k
 https://dev.to/higashikota/i-made-a-scroll-animation-using-recoil-and-gsaps-scrolltrigger-with-tailwindcss-4jf1
+
+
+https://stackoverflow.com/questions/45226712/how-to-change-css-root-variable-in-react
+https://stackoverflow.com/questions/72495242/how-to-set-css-variable-using-react
+https://stackoverflow.com/questions/52005083/how-to-define-css-variables-in-style-attribute-in-react-and-typescript
+https://codesandbox.io/p/sandbox/accordion-component-4990m
+https://codesandbox.io/p/sandbox/react-accordion-using-react-hooks-9uuvc
+https://codesandbox.io/p/sandbox/react-accordion-hbuc2
+https://codesandbox.io/p/sandbox/swiper-react-demo-t44k1
