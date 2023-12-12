@@ -19,3 +19,7 @@ https://codesandbox.io/p/sandbox/accordion-component-4990m
 https://codesandbox.io/p/sandbox/react-accordion-using-react-hooks-9uuvc
 https://codesandbox.io/p/sandbox/react-accordion-hbuc2
 https://codesandbox.io/p/sandbox/swiper-react-demo-t44k1
+
+
+https://codepen.io/GreenSock/pen/OJwPPQE?editors=1100
+https://gsap.com/community/forums/topic/38688-extra-whitespace-from-pin-spacer/
