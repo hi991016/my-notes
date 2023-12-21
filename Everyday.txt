@@ -23,3 +23,38 @@ https://codesandbox.io/p/sandbox/swiper-react-demo-t44k1
 
 https://codepen.io/GreenSock/pen/OJwPPQE?editors=1100
 https://gsap.com/community/forums/topic/38688-extra-whitespace-from-pin-spacer/
+
+https://stackoverflow.com/questions/70928780/animating-child-elements-in-scrolltrigger-gsap-horizontal-scroll
+
+      gsap
+        .timeline({
+          ease: Power2,
+          scrollTrigger: {
+            trigger: refQuery.panelTop.current,
+            start: 'bottom center',
+            toggleActions: 'play none none reverse',
+            invalidateOnRefresh: true,
+            refreshPriority: 1,
+            markers: true
+          }
+        })
+        .fromTo(
+          refQuery.panelTop.current,
+          {
+            y: 0
+          },
+          {
+            y: -120,
+            duration: 0.5
+          }
+        )
+        .fromTo(
+          refQuery.panelBottom.current,
+          {
+            opacity: 0
+          },
+          {
+            opacity: 1,
+            duration: 0.5
+          }
+        )
