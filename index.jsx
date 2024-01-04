@@ -1,8 +1,8 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 
 /* ---------------------------------- gsap ---------------------------------- */
 import { gsap } from 'gsap'
-import { ScrollTrigger, ScrollToPlugin, Power2 } from 'gsap/all'
+import { ScrollTrigger, ScrollToPlugin } from 'gsap/all'
 
 /* --------------------------------- section -------------------------------- */
 import { FirstView, Intro, Projects, Philosophy, Company } from './Section'
@@ -10,200 +10,217 @@ import { FirstView, Intro, Projects, Philosophy, Company } from './Section'
 import './Home.scss'
 
 const HomePage = () => {
-  const refQuery = {
-    firstview: useRef(null),
-    intro: useRef(null),
-    omoty: useRef(null),
-    panelTop: useRef(null),
-    panelBottom: useRef(null)
-  }
+  // useEffect(() => {
+  //   window.history.scrollRestoration = 'manual'
+  // }, [])
 
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+  useEffect(() => {
+    let mm = gsap.matchMedia(),
+      breakPoint = 1024
 
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      ScrollTrigger.config({ limitCallbacks: true })
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+    ScrollTrigger.config({ limitCallbacks: true })
 
-      const sections = gsap.utils.toArray('.vertical-scrolling')
+    const sections = document.querySelectorAll('.vertical-scrolling')
 
-      const scrolling = {
-        enabled: true,
-        events: 'scroll,wheel,touchmove,pointermove'.split(','),
-        prevent: (e) => e.preventDefault(),
-        disable() {
-          if (scrolling.enabled) {
-            scrolling.enabled = false
-            window.addEventListener('scroll', gsap.ticker.tick, { passive: true })
-            scrolling.events.forEach((e, i) =>
-              (i ? document : window).addEventListener(e, scrolling.prevent, {
-                passive: false
-              })
-            )
-          }
-        },
-        enable() {
-          if (!scrolling.enabled) {
-            scrolling.enabled = true
-            window.removeEventListener('scroll', gsap.ticker.tick)
-            scrolling.events.forEach((e, i) => (i ? document : window).removeEventListener(e, scrolling.prevent))
-          }
-        }
-      }
-
-      const goToSection = (section, index) => {
-        console.log(section, index, scrolling.enabled)
-
+    // this scrolling object just allows us to conveniently call scrolling.enable(), scrolling.disable(), and check if scrolling.enabled is true.
+    // some browsers (like iOS Safari) handle scrolling on a separate thread and can cause things to get out of sync (jitter/jumpy), so when we're animating the scroll position, force an update of GSAP tweens when there's a scroll event in order to maintain synchronization)
+    const scrolling = {
+      enabled: true,
+      events: 'scroll,wheel,touchmove,pointermove'.split(','),
+      prevent: (e) => e.preventDefault(),
+      disable() {
         if (scrolling.enabled) {
-          // skip if a scroll tween is in progress
-          scrolling.disable()
-
-          gsap.to(window, {
-            scrollTo: { y: section, autoKill: false },
-            onComplete: scrolling.enable,
-            duration: 1
-          })
-
-          // if (index === 0) {
-          //   document.querySelector('.intro').classList.remove('no-transition')
-          //   document.querySelector('.intro').classList.remove('show')
-          //   document.querySelector('.firstview__heading').classList.remove('hide')
-          // }
-
-          // if (index === 1) {
-          //   document.querySelector('.intro').classList.remove('no-transition')
-          //   document.querySelector('.firstview__heading').classList.add('hide')
-          //   document.querySelector('.intro').classList.add('show')
-
-          //   //   gsap.to('.intro__bottom', {
-          //   //     opacity: 0,
-          //   //     duration: 0.5
-          //   //   })
-
-          //   //   setTimeout(() => {
-          //   //     document.querySelector('.intro').classList.add('show')
-          //   //   }, 500)
-
-          //   //   const tl1 = gsap
-          //   //     .timeline({
-          //   //       paused: true,
-          //   //       ease: Power2,
-          //   //       scrollTrigger: {
-          //   //         trigger: '.vertical-scrolling.vertical-2',
-          //   //         toggleActions: 'play none none reverse'
-          //   //       }
-          //   //     })
-          //   // .to('.intro__left .omoty', {
-          //   //   opacity: 1,
-          //   //   duration: 1
-          //   // })
-          //   // .to('.intro__head', {
-          //   //   y: 0,
-          //   //   opacity: 1,
-          //   //   duration: 0.5
-          //   // })
-          //   // .to('.text-reveal .animation-1', {
-          //   //   y: '0',
-          //   //   duration: 0.5
-          //   // })
-          //   // .to(
-          //   //   '.text-reveal .animation-2',
-          //   //   {
-          //   //     y: '0',
-          //   //     duration: 0.5
-          //   //   },
-          //   //   '-=0.2'
-          //   // )
-          //   // .to('.text-reveal .animation-3', {
-          //   //   y: '0',
-          //   //   duration: 0.5
-          //   // })
-          // }
-
-          // // if (index === 2) {
-          // //   document.querySelector('.intro').classList.remove('no-transition')
-          // //   setTimeout(() => {
-          // //     document.querySelector('.intro').classList.add('show')
-          // //   }, 500)
-
-          // //   gsap
-          // //     .timeline({
-          // //       paused: true,
-          // //       ease: Power2,
-          // //       scrollTrigger: {
-          // //         trigger: '.vertical-scrolling.vertical-3',
-          // //         toggleActions: 'play none none reverse'
-          // //       }
-          // //     })
-          // //     .fromTo(
-          // //       '.intro__head',
-          // //       {
-          // //         y: 0
-          // //       },
-          // //       {
-          // //         y: -120,
-          // //         duration: 0.5
-          // //       }
-          // //     )
-          // //     .to('.intro__bottom', {
-          // //       opacity: 1,
-          // //       duration: 0.5
-          // //     })
-          // // }
-
-          // if (index === 3) {
-          //   document.querySelector('.intro').classList.add('no-transition')
-          //   document.querySelector('.intro').classList.remove('show')
-          // }
-
-          // anim && anim.restart()
+          scrolling.enabled = false
+          window.addEventListener('scroll', gsap.ticker.tick, { passive: true })
+          scrolling.events.forEach((e, i) =>
+            (i ? document : window).addEventListener(e, scrolling.prevent, { passive: false })
+          )
+        }
+      },
+      enable() {
+        if (!scrolling.enabled) {
+          scrolling.enabled = true
+          window.removeEventListener('scroll', gsap.ticker.tick)
+          scrolling.events.forEach((e, i) => (i ? document : window).removeEventListener(e, scrolling.prevent))
         }
       }
+    }
 
-      sections.forEach((section, index) => {
-        // const anim = gsap.from(section.querySelector(".right-col"), {yPercent: 50, duration: 1, paused: true});
-
-        ScrollTrigger.create({
-          trigger: section,
-          start: 'top bottom-=1',
-          end: 'bottom top+=1',
-          onEnter: () => goToSection(section, index),
-          onEnterBack: () => goToSection(section, index)
-        })
-      })
+    const loadFirstView = gsap.timeline({
+      paused: 'true',
+      defaults: { duration: 0.5 },
+      scrollTrigger: {
+        trigger: '.intro',
+        toggleActions: 'play none none reverse'
+      }
+    })
+    const loadIntro = gsap.timeline({
+      paused: 'true',
+      defaults: { duration: 0.5 },
+      scrollTrigger: {
+        trigger: '.intro',
+        toggleActions: 'play none none reset'
+      }
     })
 
-    return () => ctx.revert()
-  }, [refQuery.firstview])
+    mm.add(
+      {
+        // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+        isDesktop: `(min-width: ${breakPoint}px)`,
+        isMobile: `(max-width: ${breakPoint - 1}px)`
+      },
+      (context) => {
+        // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
+        let { isDesktop } = context.conditions
+
+        loadFirstView.fromTo(
+          '.firstview__heading',
+          {
+            opacity: 1
+          },
+          {
+            opacity: 0
+          }
+        )
+
+        if (isDesktop) {
+          loadIntro
+            .to('.intro__left', {
+              opacity: 1,
+              delay: 1
+            })
+            .to('.intro__left .omoty', {
+              x: 0,
+              delay: 0.5
+            })
+            .to('.intro__right', {
+              opacity: 1,
+              onComplete: () => {
+                document.querySelector('.c-scroll').classList.add('fade')
+              }
+            })
+        } else {
+          loadIntro
+            .to('.intro__left', {
+              opacity: 1,
+              delay: 1
+            })
+            .to('.intro__left .omoty', {
+              opacity: 0,
+              duration: 0.5,
+              delay: 0.5
+            })
+            .to('.intro__right', {
+              opacity: 1,
+              onComplete: () => {
+                document.querySelector('.c-scroll').classList.add('fade')
+              }
+            })
+        }
+
+        return () => {
+          // optionally return a cleanup function that will be called when none of the conditions match anymore (after having matched)
+          // it'll automatically call context.revert() - do NOT do that here . Only put custom cleanup code here.
+        }
+      }
+    )
+
+    const intoAnimation = (section, i) => {
+      if (i === 0) {
+        document.querySelector('.c-scroll').classList.remove('fade')
+      }
+
+      if (i === 1) {
+        loadFirstView.play()
+        loadIntro.play()
+
+        gsap.to('.intro', {
+          opacity: 1,
+          delay: 1,
+          duration: 0.5
+        })
+        gsap.to('.projects__title', {
+          opacity: 0,
+          duration: 0.5
+        })
+      }
+
+      if (i === 2) {
+        document.querySelector('.c-scroll').classList.add('fade')
+
+        gsap.to('.intro', {
+          opacity: 0,
+          duration: 0.5
+        })
+        gsap.to('.projects__title', {
+          opacity: 1,
+          delay: 1,
+          duration: 0.5
+        })
+      }
+
+      if (i === 3) {
+        gsap.to('.projects__title', {
+          opacity: 0,
+          duration: 0.3
+        })
+
+        document.querySelector('.c-scroll').classList.remove('fade')
+        document.querySelector('.vertical-normal').classList.add('fade')
+      } else {
+        document.querySelector('.vertical-normal').classList.remove('fade')
+      }
+    }
+
+    const goToSection = (section, i) => {
+      if (scrolling.enabled) {
+        // skip if a scroll tween is in progress
+        scrolling.disable()
+        gsap.to(window, {
+          scrollTo: { y: section, autoKill: false },
+          onComplete: scrolling.enable,
+          duration: 0.7,
+          onEnter: () => intoAnimation(section, i)
+        })
+
+        // anim && anim.restart()
+      }
+    }
+
+    sections.forEach((section, i) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top bottom-=1',
+        end: 'bottom top+=1',
+        onEnter: () => goToSection(section, i),
+        onEnterBack: () => goToSection(section, i)
+      })
+    })
+  }, [])
 
   return (
     <>
-      <FirstView refHeading={refQuery.firstview} />
-
-      <Intro />
+      <div className='c-scroll'>
+        <div className='line'>
+          <span></span>
+        </div>
+      </div>
 
       <div className='fullpage'>
-        <section className='vertical-scrolling vertical-1'>
-          <div className='parent'>
-            <div className='child'></div>
-          </div>
+        <section className='vertical-scrolling vertical-firstview'>
+          <FirstView />
         </section>
-        <section className='vertical-scrolling vertical-2'>
-          <div className='parent'>
-            <div className='child'></div>
-          </div>
+        <section className='vertical-scrolling vertical-intro'>
+          <Intro />
         </section>
-        <section className='vertical-scrolling vertical-3'>
-          <div className='parent'>
-            <div className='child'></div>
-          </div>
+        <section className='vertical-scrolling vertical-projects'>
+          <Projects />
         </section>
 
-        <section className='vertical-scrolling'>
-          <div className='vertical-wrapper'>
-            <Projects />
-            <Philosophy />
-            <Company />
-          </div>
+        <section className='vertical-scrolling vertical-normal'>
+          <Philosophy />
+          <Company />
         </section>
       </div>
     </>
