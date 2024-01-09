@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 /* ---------------------------------- gsap ---------------------------------- */
 import { gsap } from 'gsap'
@@ -10,42 +10,20 @@ import { FirstView, Intro, Projects, Philosophy, Company } from './Section'
 import './Home.scss'
 
 const HomePage = () => {
-  // useEffect(() => {
-  //   window.history.scrollRestoration = 'manual'
-  // }, [])
+  const refProjects = useRef(null)
+  const refNormal = useRef(null)
+  const refScroll = useRef(null)
 
   useEffect(() => {
     let mm = gsap.matchMedia(),
       breakPoint = 1024
 
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
-    ScrollTrigger.config({ limitCallbacks: true })
+    gsap.registerPlugin(ScrollTrigger)
 
-    const sections = document.querySelectorAll('.vertical-scrolling')
-
-    // this scrolling object just allows us to conveniently call scrolling.enable(), scrolling.disable(), and check if scrolling.enabled is true.
-    // some browsers (like iOS Safari) handle scrolling on a separate thread and can cause things to get out of sync (jitter/jumpy), so when we're animating the scroll position, force an update of GSAP tweens when there's a scroll event in order to maintain synchronization)
-    const scrolling = {
-      enabled: true,
-      events: 'scroll,wheel,touchmove,pointermove'.split(','),
-      prevent: (e) => e.preventDefault(),
-      disable() {
-        if (scrolling.enabled) {
-          scrolling.enabled = false
-          window.addEventListener('scroll', gsap.ticker.tick, { passive: true })
-          scrolling.events.forEach((e, i) =>
-            (i ? document : window).addEventListener(e, scrolling.prevent, { passive: false })
-          )
-        }
-      },
-      enable() {
-        if (!scrolling.enabled) {
-          scrolling.enabled = true
-          window.removeEventListener('scroll', gsap.ticker.tick)
-          scrolling.events.forEach((e, i) => (i ? document : window).removeEventListener(e, scrolling.prevent))
-        }
-      }
-    }
+    ScrollTrigger.defaults({
+      toggleActions: 'restart pause resume pause',
+      scroller: '.fullpage'
+    })
 
     const loadFirstView = gsap.timeline({
       paused: 'true',
@@ -97,7 +75,7 @@ const HomePage = () => {
             .to('.intro__right', {
               opacity: 1,
               onComplete: () => {
-                document.querySelector('.c-scroll').classList.add('fade')
+                refScroll.current.classList.add('fade')
               }
             })
         } else {
@@ -114,7 +92,7 @@ const HomePage = () => {
             .to('.intro__right', {
               opacity: 1,
               onComplete: () => {
-                document.querySelector('.c-scroll').classList.add('fade')
+                refScroll.current.classList.add('fade')
               }
             })
         }
@@ -126,9 +104,21 @@ const HomePage = () => {
       }
     )
 
-    const intoAnimation = (section, i) => {
+    const sections = document.querySelectorAll('.vertical-scrolling')
+
+    sections.forEach((section, i) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top bottom-=1',
+        end: 'bottom top+=1',
+        onEnter: () => goToSection(section, i),
+        onEnterBack: () => goToSection(section, i)
+      })
+    })
+
+    const goToSection = (section, i) => {
       if (i === 0) {
-        document.querySelector('.c-scroll').classList.remove('fade')
+        refScroll.current.classList.remove('fade')
       }
 
       if (i === 1) {
@@ -147,7 +137,7 @@ const HomePage = () => {
       }
 
       if (i === 2) {
-        document.querySelector('.c-scroll').classList.add('fade')
+        refScroll.current.classList.add('fade')
 
         gsap.to('.intro', {
           opacity: 0,
@@ -166,59 +156,38 @@ const HomePage = () => {
           duration: 0.3
         })
 
-        document.querySelector('.c-scroll').classList.remove('fade')
-        document.querySelector('.vertical-normal').classList.add('fade')
+        setTimeout(() => {
+          refNormal.current.classList.add('fade')
+        }, 500)
+        refScroll.current.classList.remove('fade')
       } else {
-        document.querySelector('.vertical-normal').classList.remove('fade')
+        refNormal.current.classList.remove('fade')
       }
     }
-
-    const goToSection = (section, i) => {
-      if (scrolling.enabled) {
-        // skip if a scroll tween is in progress
-        scrolling.disable()
-        gsap.to(window, {
-          scrollTo: { y: section, autoKill: false },
-          onComplete: scrolling.enable,
-          duration: 0.7,
-          onEnter: () => intoAnimation(section, i)
-        })
-
-        // anim && anim.restart()
-      }
-    }
-
-    sections.forEach((section, i) => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top bottom-=1',
-        end: 'bottom top+=1',
-        onEnter: () => goToSection(section, i),
-        onEnterBack: () => goToSection(section, i)
-      })
-    })
   }, [])
 
   return (
     <>
-      <div className='c-scroll'>
-        <div className='line'>
-          <span></span>
-        </div>
-      </div>
-
       <div className='fullpage'>
+        <div className='c-scroll' ref={refScroll}>
+          <div className='line'>
+            <span></span>
+          </div>
+        </div>
+
         <section className='vertical-scrolling vertical-firstview'>
           <FirstView />
         </section>
+
         <section className='vertical-scrolling vertical-intro'>
           <Intro />
         </section>
-        <section className='vertical-scrolling vertical-projects'>
+
+        <section className='vertical-scrolling vertical-projects' ref={refProjects}>
           <Projects />
         </section>
 
-        <section className='vertical-scrolling vertical-normal'>
+        <section className='vertical-scrolling vertical-normal' ref={refNormal}>
           <Philosophy />
           <Company />
         </section>

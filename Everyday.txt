@@ -26,6 +26,25 @@ https://gsap.com/community/forums/topic/38688-extra-whitespace-from-pin-spacer/
 
 https://stackoverflow.com/questions/70928780/animating-child-elements-in-scrolltrigger-gsap-horizontal-scroll
 
+https://codepen.io/alba_alba/pen/KKpLLRP
+https://codepen.io/GreenSock/pen/YzyaKrq?editors=1010
+https://gsap.com/community/forums/topic/26906-scrolltrigger-and-css-scroll-snap/
+https://www.webcreatorbox.com/tech/scroll-snap?fbclid=IwAR0aLY9QGjmecJEdh6A7FfcVArUctZRl2y98_zZifLfnzFdLZBhZX6hZj8I
+
+
+.fullpage {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.vertical-scrolling {
+  scroll-snap-align: start;
+  height: 100vh;
+}
+
+
       gsap
         .timeline({
           ease: Power2,
