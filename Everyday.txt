@@ -30,6 +30,11 @@ https://codepen.io/alba_alba/pen/KKpLLRP
 https://codepen.io/GreenSock/pen/YzyaKrq?editors=1010
 https://gsap.com/community/forums/topic/26906-scrolltrigger-and-css-scroll-snap/
 https://www.webcreatorbox.com/tech/scroll-snap?fbclid=IwAR0aLY9QGjmecJEdh6A7FfcVArUctZRl2y98_zZifLfnzFdLZBhZX6hZj8I
+https://stackoverflow.com/questions/70501759/is-it-possible-to-adjust-css-scroll-snap-speed-easing
+https://stackoverflow.com/questions/68703004/snap-scroll-css-too-fast-jumpy-in-chrome-but-works-fine-everywhere-else
+
+https://www.youtube.com/watch?v=YHeZ8uqKOjA
+https://www.youtube.com/watch?v=ZVb_KENWIoE
 
 
 .fullpage {
@@ -42,6 +47,15 @@ https://www.webcreatorbox.com/tech/scroll-snap?fbclid=IwAR0aLY9QGjmecJEdh6A7FfcV
 .vertical-scrolling {
   scroll-snap-align: start;
   height: 100vh;
+}
+
+
+.container {
+  scroll-snap-type: y mandatory;
+}
+.section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 
