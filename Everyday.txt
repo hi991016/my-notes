@@ -26,37 +26,12 @@ https://gsap.com/community/forums/topic/38688-extra-whitespace-from-pin-spacer/
 
 https://stackoverflow.com/questions/70928780/animating-child-elements-in-scrolltrigger-gsap-horizontal-scroll
 
-https://codepen.io/alba_alba/pen/KKpLLRP
-https://codepen.io/GreenSock/pen/YzyaKrq?editors=1010
-https://gsap.com/community/forums/topic/26906-scrolltrigger-and-css-scroll-snap/
-https://www.webcreatorbox.com/tech/scroll-snap?fbclid=IwAR0aLY9QGjmecJEdh6A7FfcVArUctZRl2y98_zZifLfnzFdLZBhZX6hZj8I
-https://stackoverflow.com/questions/70501759/is-it-possible-to-adjust-css-scroll-snap-speed-easing
-https://stackoverflow.com/questions/68703004/snap-scroll-css-too-fast-jumpy-in-chrome-but-works-fine-everywhere-else
 
-https://www.youtube.com/watch?v=YHeZ8uqKOjA
-https://www.youtube.com/watch?v=ZVb_KENWIoE
-
-
-.fullpage {
-  height: 100vh;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-.vertical-scrolling {
-  scroll-snap-align: start;
-  height: 100vh;
-}
-
-
-.container {
-  scroll-snap-type: y mandatory;
-}
-.section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
+https://codesandbox.io/p/sandbox/github/patriciaSR/portfolio
+https://hakushu.onlineshop.suntory.co.jp/view/asset/user-2-1-2-67a5dbdc26933d610c92955193a0b61b.js
+https://github.com/alvarotrigo/react-fullpage?tab=readme-ov-file#examples
+https://codepen.io/m3ms/pen/mddQERa?editors=0010
+https://gsap.com/community/forums/topic/36443-scrollto-with-scrolltrigger-uncontrollable-scroll/#comment-182599
 
 
       gsap
