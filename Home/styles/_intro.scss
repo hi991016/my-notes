@@ -1,0 +1,250 @@
+// ======== Intro
+.homepage {
+  .intro {
+    width: 100%;
+    height: 100vh;
+
+    @include maxW(1023px) {
+      height: var(--app-height);
+    }
+
+    &__container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      display: grid;
+      grid-template-columns: 140px 1fr 170px 1fr 120px;
+      align-items: flex-end;
+
+      @include maxW(1023px) {
+        display: block;
+        gap: unset;
+      }
+    }
+
+    &__left,
+    &__right {
+      width: 100%;
+      height: calc(100vh - 49px);
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      opacity: 0;
+
+      @include maxW(1023px) {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__left {
+      display: flex;
+      align-items: center;
+
+      .omoty {
+        width: 100%;
+        transform: translateX(calc(50% + 58px));
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      path,
+      rect {
+        fill: var(--main-text-cl);
+      }
+
+      @include maxW(1023px) {
+        display: block;
+        position: absolute;
+        top: 0;
+
+        .omoty {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        svg {
+          margin: 0 auto;
+          width: 80%;
+          padding-right: 3.5%;
+        }
+      }
+    }
+
+    &__top,
+    &__bottom {
+      width: 100%;
+      padding-left: 15px;
+
+      @include maxW(1023px) {
+        display: block;
+        height: auto;
+        top: auto;
+        bottom: 22px;
+        padding: 0 18px;
+      }
+    }
+
+    &__top {
+      h2 {
+        font-size: 3.8rem;
+        font-weight: 400;
+        margin-bottom: 25px;
+        letter-spacing: -0.7px;
+      }
+
+      p {
+        font-size: 1.8rem;
+        line-height: 1.5;
+        font-feature-settings: 'palt' 1;
+      }
+
+      @include minW(1441px) {
+        h2 {
+          font-size: 2.64vw;
+        }
+
+        p {
+          font-size: 1.25vw;
+        }
+      }
+
+      @include maxW(1023px) {
+        h2 {
+          font-size: 2.8rem;
+          margin-bottom: 20px;
+          letter-spacing: -0.3px;
+        }
+
+        p {
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    &__bottom {
+      margin-top: 55px;
+
+      p {
+        font-size: 1.5rem;
+        font-feature-settings: 'palt' 1;
+        line-height: 1.8;
+
+        &:first-child {
+          margin-bottom: 25px;
+        }
+
+        span {
+          font-size: 1.6rem;
+        }
+      }
+
+      @include minW(1441px) {
+        p {
+          font-size: 1.042vw;
+
+          span {
+            font-size: 1.11vw;
+          }
+        }
+      }
+
+      @include maxW(1023px) {
+        p {
+          width: 100%;
+          font-size: 1.3rem;
+          line-height: 1.7;
+
+          span {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+
+  .vertical {
+    &-scrolling {
+      width: 100%;
+      height: 100vh;
+
+      &.vertical-normal {
+        height: auto;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+
+        &.fade {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @keyframes scroll-down {
+    0% {
+      height: 0;
+      top: 0;
+    }
+    30% {
+      height: 100%;
+      top: 0;
+    }
+    60% {
+      height: 100%;
+      top: 100%;
+    }
+    100% {
+      height: 100%;
+      top: 100%;
+    }
+  }
+
+  .c-scroll {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    &.fade {
+      opacity: 1;
+    }
+
+    .line {
+      display: block;
+      height: 40px;
+      width: 1px;
+      background-color: rgba($color: var(--main-text-rgb), $alpha: 0.3);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto;
+
+      span {
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 0%;
+        animation: scroll-down 4s infinite;
+        background-color: var(--main-text-cl);
+      }
+    }
+
+    @include maxW(1023px) {
+      right: 20px;
+      bottom: 20px;
+    }
+  }
+}
