@@ -1,0 +1,12 @@
+https://www.npmjs.com/package/react-meta-tags
+https://github.com/stereobooster/react-snap
+https://github.com/stereobooster/react-snap/issues/91
+https://stackoverflow.com/questions/71668256/deprecation-notice-reactdom-render-is-no-longer-supported-in-react-18
+https://www.bugpilot.com/guides/en/pre-rendering-your-react-app-with-react-snap-b80e
+
+https://www.youtube.com/watch?v=l5_n0Lenwy8
+
+https://viblo.asia/p/chuyen-doi-tu-create-react-app-sang-vite-obA4630lJKv
+
+
+https://www.youtube.com/watch?v=STeKBm67l6M

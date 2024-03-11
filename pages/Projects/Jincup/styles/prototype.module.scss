@@ -2,7 +2,7 @@
 
 .prototypeContent {
   width: 100%;
-  margin: 150px auto 95px;
+  margin: 150px auto 60px;
 
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@
 
   @include maxW(1023px) {
     display: block;
-    padding: 0 16.9082125604% 0 5.3140096618%;
+    padding: 0 16.9082125604% 0 22px;
     margin: 45px auto;
 
     .left,
@@ -51,7 +51,7 @@
     }
 
     .left {
-      margin-top: 100px;
+      margin-top: 80px;
 
       .logo svg {
         width: auto;
@@ -78,11 +78,15 @@
   }
 
   @include maxW(1023px) {
-    bottom: 20px;
-    padding: 0 22px;
+    position: unset;
+    padding: 0;
 
     h2 {
       font-size: 2.4rem;
+      position: absolute;
+      top: 20px;
+      left: 22px;
+      z-index: 2;
     }
   }
 }
@@ -93,7 +97,7 @@
     font-weight: 400;
 
     span {
-      font-size: 1.3rem;
+      font-size: 1.6rem;
       display: inline-block;
       margin-left: 5px;
       position: absolute;
@@ -101,7 +105,8 @@
   }
 
   p {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-left: -1px;
     font-size: 1.8rem;
   }
 
@@ -110,11 +115,12 @@
       font-size: 2.2rem;
 
       span {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
       }
     }
 
     p {
+      margin-top: 10px;
       font-size: 1.4rem;
     }
   }
@@ -125,11 +131,12 @@
 
   p {
     font-size: 1.5rem;
-    letter-spacing: -0.6px;
-    line-height: 1.73;
-    margin-bottom: 55px;
+    letter-spacing: -0.4px;
+    line-height: 1.8;
+    margin-bottom: 25px;
 
     &:last-child {
+      margin-top: 50px;
       margin-bottom: initial;
     }
   }
@@ -140,7 +147,7 @@
     p {
       font-size: 1.3rem;
       line-height: 1.75;
-      letter-spacing: -0.52px;
+      margin-bottom: 20px;
     }
   }
 }
@@ -149,13 +156,14 @@
   display: flex;
   align-items: center;
   gap: 28px;
-  margin-top: 20px;
+  margin-top: 15px;
 
   a:hover {
     opacity: 1;
   }
 
   @include maxW(1032px) {
+    margin-top: 10px;
     gap: 18px;
 
     a:first-child svg {
@@ -177,17 +185,9 @@
 
 .prototypeSwiper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   height: 100vh;
   position: relative;
-
-  .left {
-    background-color: palegoldenrod;
-  }
-
-  .right {
-    background-color: pink;
-  }
 
   .left,
   .right {
@@ -223,8 +223,17 @@
   align-items: center;
   gap: 10px;
 
+  position: absolute;
+  bottom: 20px;
+  right: 60px;
+  z-index: 2;
+
   span {
     font-size: 1.6rem;
+  }
+
+  .bullet {
+    display: none;
   }
 }
 
