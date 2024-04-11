@@ -9,3 +9,8 @@
     <p>取消</p>
     <p class="neue-fonts fw-500">CLEAR</p>
 </button>
+
+
+Redirection for Contact Form 7
+
+https://stackoverflow.com/questions/46847969/disable-one-option-from-the-multiple-options-of-the-select
