@@ -1,0 +1,11 @@
+<div class="btn btn-send js-send" id="btnSend">
+    <input type="submit" value="Send">
+    <div class="text">
+        <p>送信</p>
+        <p class="neue-fonts fw-500">SEND</p>
+    </div>
+</div>
+<button class="btn btn-clear js-clear">
+    <p>取消</p>
+    <p class="neue-fonts fw-500">CLEAR</p>
+</button>

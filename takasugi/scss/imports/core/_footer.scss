@@ -1,0 +1,47 @@
+/* Footer
+------------------------------------------------------------*/
+
+.c-footer {
+  &_top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 170px;
+
+    @include maxW(1023px) {
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 100px;
+      row-gap: 25px;
+    }
+  }
+
+  &_items {
+    font-family: $neue-fonts;
+    text-transform: uppercase;
+
+    h2 {
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+
+    h2,
+    a,
+    p {
+      font-size: 1.4rem;
+      line-height: 1.54;
+      width: fit-content;
+    }
+
+    @include maxW(1023px) {
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      h2,
+      a,
+      p {
+        font-size: 1.2rem;
+        line-height: 1.63;
+      }
+    }
+  }
+}
