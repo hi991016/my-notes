@@ -1,0 +1,28 @@
+https://stackoverflow.com/questions/46670150/low-power-mode-detection-in-javascript-for-ios11
+https://forums.developer.apple.com/forums/thread/709821
+https://discourse.webflow.com/t/autoplay-video-not-playing-on-low-power-mode/215057/2
+
+
+
+
+function onPlayerReady(event) {
+  event.target.mute();
+  event.target.playVideo();
+
+  $("body").on("click touchstart", function () {
+    event.target.playVideo();
+  });
+}
+
+function onPlayerStateChange(event) {
+  switch (event.data) {
+    case YT.PlayerState.ENDED:
+      event.target.playVideo();
+      break;
+    case YT.PlayerState.PLAYING:
+      $(".js-youtube .poster").addClass("--hidden");
+      break;
+    default:
+      break;
+  }
+}
