@@ -66,3 +66,27 @@ https://gsap.com/community/forums/topic/36443-scrollto-with-scrolltrigger-uncont
             duration: 0.5
           }
         )
+
+
+
+
+
+
+$(".scrollable-element").on("scroll mousewheel touchmove", function () {
+  let top = -1,
+    offset = $(".js-offset-top").offset().top + $(window).height();
+
+  top = $(this).scrollTop();
+
+  if (top > 1) {
+    $.fn.fullpage.moveSectionDown();
+  } else if (top == 0) {
+    $.fn.fullpage.moveTo(4);
+  }
+
+  if (top > offset) {
+    $(".c-header").removeClass("c-header--white");
+  } else {
+    $(".c-header").addClass("c-header--white");
+  }
+});
