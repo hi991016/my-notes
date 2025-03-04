@@ -1,0 +1,11 @@
+https://stackoverflow.com/questions/15402239/how-to-load-wordpress-post-with-ajax-onclick
+https://wordpress.stackexchange.com/questions/17854/auto-refresh-page-every-minute
+https://stackoverflow.com/questions/69617404/get-wordpress-posts-data-with-ajax
+https://www.artisansweb.net/load-wordpress-post-ajax/
+https://codepen.io/strangerintheq/pen/zXVpQw
+https://codepen.io/mtaz/pen/EyxPNX?editors=1010
+https://www.amcharts.com/demos/rotating-globe-with-circles/
+https://gist.github.com/atanumallick/8d18989cd538c72ae1ead1c3b18d7b54
+https://codepen.io/AbdulmohsenA/pen/abrmBbG?editors=1010
+https://codepen.io/andywise/pen/ewgGge
+https://codepen.io/tequila-moonrise/pen/bGNmRYa

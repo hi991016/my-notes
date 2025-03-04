@@ -1,4 +1,0 @@
-https://codepen.io/urbgimtam/pen/XWXdypQ
-https://gsap.com/community/forums/topic/24978-full-page-site/#comment-120049
-https://gsap.com/community/forums/topic/32581-there-is-a-problem-with-using-the-scrollto-plugin/
-https://gsap.com/community/forums/topic/24428-using-scrolltrigger-and-scrollto-as-fullpagejs-does/#comment-116278
