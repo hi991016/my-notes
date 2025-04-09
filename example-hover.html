@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Effect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .table-of-contents {
+            width: 200px;
+        }
+
+        .table-of-contents h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .table-of-contents li {
+            padding: 10px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            opacity: 0.5; /* Opacity mặc định */
+        }
+
+        .table-of-contents li:hover {
+            opacity: 1; /* Opacity khi hover */
+        }
+
+        .image-container {
+            width: 300px;
+            height: 400px;
+        }
+
+        #preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table-of-contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li data-image="https://via.placeholder.com/300x400?text=Preface">Preface</li>
+                <li data-image="https://via.placeholder.com/300x400?text=Essay">Essay</li>
+                <li data-image="https://via.placeholder.com/300x400?text=Archives">Archives</li>
+                <li data-image="https://via.placeholder.com/300x400?text=Diary">Diary</li>
+                <li data-image="https://via.placeholder.com/300x400?text=Family">Family</li>
+                <li data-image="https://via.placeholder.com/300x400/FFD700?text=Background+Colors">Background Colors</li>
+                <li data-image="https://via.placeholder.com/300x400?text=Stroll">Stroll</li>
+                <li data-image="https://via.placeholder.com/300x400?text=Blueprint+Album">Blueprint & Album</li>
+                <li data-image="https://via.placeholder.com/300x400?text=Writings">Writings</li>
+                <li data-image="https://via.placeholder.com/300x400?text=Comments">Comments</li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <img id="preview-image" src="https://via.placeholder.com/300x400?text=Initial+Image" alt="Preview Image">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.table-of-contents li');
+            const previewImage = document.getElementById('preview-image');
+
+            items.forEach(item => {
+                item.addEventListener('mouseover', () => {
+                    // Thay đổi hình ảnh
+                    const imageSrc = item.getAttribute('data-image');
+                    previewImage.src = imageSrc;
+
+                    // Đặt opacity cho các mục
+                    items.forEach(i => {
+                        i.style.opacity = '0.5'; // Các mục khác opacity 0.5
+                    });
+                    item.style.opacity = '1'; // Mục đang hover opacity 1
+                });
+
+                // Khi không hover nữa, reset opacity
+                item.addEventListener('mouseout', () => {
+                    items.forEach(i => {
+                        i.style.opacity = '0.5'; // Reset tất cả về opacity 0.5
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
