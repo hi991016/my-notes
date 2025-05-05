@@ -1,0 +1,100 @@
+<div class="form_line form_line_rq seeAnotherField">
+    <div class="ttl required">
+        <span>お問い合わせ種別</span>
+    </div>
+    <div class="input typechoose">
+        [multiform choose]
+    </div>
+</div>
+<div class="form_line form_line_rq">
+    <div class="ttl required">
+        <span>お名前</span>
+    </div>
+    <div class="input">
+        [multiform username]
+    </div>
+</div>
+<div class="form_line">
+    <div class="ttl">
+        <span>ふりがな</span>
+    </div>
+    <div class="input">
+        [multiform burigana]
+    </div>
+</div>
+<div class="form_line">
+    <div class="ttl">
+        <span>御社名</span>
+    </div>
+    <div class="input">
+        [multiform companyname]
+    </div>
+</div>
+<div class="form_line">
+    <div class="ttl">
+        <span>部署名</span>
+    </div>
+    <div class="input">
+        [multiform departmentname]
+    </div>
+</div>
+<div class="form_line">
+    <div class="ttl">
+        <span>郵便番号</span>
+    </div>
+    <div class="input input1 input2">
+        [multiform postcode]
+    </div>
+</div>
+<div class="form_line">
+    <div class="ttl">
+        <span>ご住所</span>
+    </div>
+    <div class="input">
+        [multiform address]
+    </div>
+</div>
+<div class="form_line form_line_rq">
+    <div class="ttl required">
+        <span>メールアドレス</span>
+    </div>
+    <div class="input input2">
+        [multiform email]
+    </div>
+</div>
+<div class="form_line form_line_rq">
+    <div class="ttl required">
+        <span>電話番号</span>
+    </div>
+    <div class="input input2">
+        [multiform tel]
+    </div>
+</div>
+<div class="form_line form_date">
+    <div class="ttl">
+        <span>生年月日</span>
+    </div>
+    <div class="input select_date input2">
+        [multiform yeardate]
+        <span>年</span><br>
+        [multiform monthdate]
+        <span>月</span><br>
+        [multiform daydate]
+        <span>日</span>
+    </div>
+</div>
+<div class="form_line form_line_rq">
+    <div class="ttl required">
+        <span>ご質問やご希望など</span>
+    </div>
+    <div class="input">
+        [multiform question]
+    </div>
+</div>
+
+<div class="wrap_btn_sub">
+    [previous submitBack class:back "修正する"]
+    [submit "送信する"]
+</div>
+
+[multistep multistep-23 last_step send_email "/grand/contact/complete"]

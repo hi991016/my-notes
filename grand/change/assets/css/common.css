@@ -3458,8 +3458,12 @@ input::-webkit-inner-spin-button {
 }
 
 @media screen and (max-width: 450px) {
+  .wpcf7-form-control-wrap {
+    width: 100%;
+  }
   .contact form .form_line .select_date select {
-    width: 32%;
+    /* width: 32%; */
+    width: 96%;
     background: url("../img/arrow_select.png") no-repeat 81%;
     background-size: 16px 8px;
   }
