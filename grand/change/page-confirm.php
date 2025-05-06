@@ -12,7 +12,7 @@
             <p class="contact_ttl">CONTACT</p>
             <p class="contact_note contact_note_cf">お問い合わせ内容のご確認</p>
             <div class="mw_wp_form mw_wp_form_confirm mw_wp_form_preview">
-                <?php echo do_shortcode( '[contact-form-7 id="9bf914b" title="Confirm"]' ); ?>
+                <?php echo do_shortcode( '[contact-form-7 id="c9ccf42" title="Confirm"]' ); ?>
             </div>
 		</div>
 	</div>

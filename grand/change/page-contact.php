@@ -17,7 +17,7 @@
                 <span>TEL <a href="tel:0357245666">03-5724-5666</a></span>
             </div>
             <p class="contact_note1">※印は必須項目となります</p>
-            <?php echo do_shortcode( '[contact-form-7 id="c57fc9a" title="Contact"]' ); ?>
+            <?php echo do_shortcode( '[contact-form-7 id="0506263" title="Contact"]' ); ?>
 		</div>
 	</div>
     <?php get_footer(); ?>
